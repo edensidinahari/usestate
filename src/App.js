@@ -19,7 +19,6 @@ function App() {
       <p>Choose maximum number</p>
       <input type="number" value={max_num} onChange={handleMax}></input>
       <Counter delta={delta1} max_num={max_num}></Counter>
-      <Counter delta={delta1} max_num={max_num}></Counter>
     </div>
   );
 }
