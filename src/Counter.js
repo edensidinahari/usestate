@@ -1,28 +1,33 @@
-import{useState} from "react"
-function Counter() {
-  const [count, setCount] = useState(1)
-  function incr (){
-    setCount(
-        function (oldcount){
-            return oldcount+1
-        }
-    )
-  }
-  function reset(){
-    setCount(
-        function(){
-            return 1
-        }
-    )
-  }
-    return (
-    <div> 
-      <h1> Counter {count}</h1>
-      <button onClick = {incr}> Click here to add 1 to the counter</button>
-      <p/>
-      <button onClick = {reset}> Click here to reset the counter</button>
-    </div>
-  );
-}
+import{useState} from"react";
+function Counter(props) {
+    const [count, setCount] = useState(1)
+    const{delta}=props
+    const{max_num}=props
 
-export default Counter;
+    function incr(){
+        setCount(
+            function(oldcount){
+                if(oldcount+delta<max_num){
+                    return oldcount+delta
+                }
+                else return 0;
+
+            }
+        )
+    }
+    function reset(){
+        setCount(0)
+    }
+
+    return (
+        <div>
+            <h1>Counter</h1>
+            <h3>counter is at {count}</h3>
+            <button onClick={incr}>Click to add {delta} to counter</button>
+            <p/>
+            <button onClick={reset}>Click to reset counter</button>
+        </div>
+      );
+    }
+    
+    export default Counter;
