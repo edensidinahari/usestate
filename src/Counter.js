@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {useEffect} from 'react';
 
 
-function Checker(props) {
+function Counter(props) {
 
 const{password, checkPassword, setDisabled} = props
 const [message, setMessage] = useState()
@@ -30,4 +30,4 @@ useEffect(()=>{
   );
 }
 
-export default Checker;
+export default Counter;

@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-import Checker from './Checker';
+import Counter from './Counter';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <p>
         <input type="password" value={password} onChange={handlePassword}></input>
         <button disabled={disable}>Submit</button>
-        <Checker password={password} checkPassword={handlePassword} setPassword={setPassword} setDisabled={setDisabled}/>
+        <Counter password={password} checkPassword={handlePassword} setPassword={setPassword} setDisabled={setDisabled}/>
       </p>
 
     </div>
