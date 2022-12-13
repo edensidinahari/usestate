@@ -1,35 +1,33 @@
-import{useState} from"react";
-function Counter(props) {
-    const [count, setCount] = useState(0)
-    const{delta,max_num,getData}=props
+import {useState} from 'react';
+import {useEffect} from 'react';
 
-    function incr(){
-        setCount(
-            function(oldcount){
-                if(oldcount+delta<max_num){
-                    getData(oldcount+delta)
-                    return oldcount+delta
-                }
-                else return 0;
 
-            }
-        )
-    }
-    function reset(){
-        setCount(0)
-    }
+function Checker(props) {
 
-    return (
-        <div>
-            <h1>Counter</h1>
-            <h3>counter is at {count}</h3>
-            <button onClick={incr}>Click to add {delta} to counter</button>
-            <p/>
-            <button onClick={reset}>Click to reset counter</button>
-        </div>
-      );
+const{password, checkPassword, setDisabled} = props
+const [message, setMessage] = useState()
+
+useEffect(()=>{
+    if(password.length>6){
+        setMessage("strong")
+        setDisabled(false)
     }
-    
-    export default Counter;
-    
+    else if(password.length>2){
+        setMessage("medium")
+        setDisabled(false)
+    }
+    else{
+        setMessage("weak")
+        setDisabled(true)
+    }
+}, [checkPassword,password,setDisabled])
+
   
+  return (
+    <div className="App">
+        <h1>password is {message}</h1>
+    </div>
+  );
+}
+
+export default Checker;
